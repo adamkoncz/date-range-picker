@@ -1,0 +1,27 @@
+{
+  "name": "date.range",
+  "version": "1.0.0",
+  "description": "date range picker",
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha"
+  },
+  "author": "adam koncz",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/moment": "^2.13.0",
+    "chai": "^4.1.2",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.2",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "less": "^2.7.3",
+    "mocha": "^4.0.1",
+    "moment": "^2.19.2",
+    "requirejs": "^2.3.5",
+    "jquery": "^3.2.1"
+  },
+  "dependencies": {
+    "@types/angular": "^1.6.39"
+  }
+}

@@ -1,2 +1,7 @@
 # date-range-picker
-Simple date range picker With a few options I needed for a project
+
+An extremly simple date range picker.
+
+Supports selecting dates in uninterrupted sequences.
+
+

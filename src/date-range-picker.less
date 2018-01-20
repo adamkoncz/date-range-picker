@@ -1,0 +1,195 @@
+@no-color:rgba(0,0,0,0);
+
+@color: #333;
+@bg-color: #ddd;
+@border-color: #666;
+
+@placeholder-color: @no-color;
+@placeholder-bg-color: @no-color;
+@placeholder-border-color: @no-color;
+
+@locked-color: fade(@color, 20%);
+@locked-bg-color: fade(@bg-color, 20%);
+@locked-border-color: fade(@border-color, 20%);
+
+@out-of-range-color:  @no-color;
+@out-of-range-bg-color:  @no-color;
+@out-of-range-border-color:  @no-color;
+
+@out-of-sequence-color: fade(@color, 60%);;
+@out-of-sequence-bg-color: fade(@bg-color, 60%);
+@out-of-sequence-border-color: fade(@border-color, 60%);
+
+@month-color: fade(@color, 80%);
+@week-color: @month-color;
+@selected-bg-color: #007b9a;
+@selected-color: #fff;
+
+
+
+
+.drp {
+    color: @color;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    max-width: 350px;
+    position: relative;
+    
+
+    .drp_toolbar{
+        min-height: 2em;
+        line-height: 2em;
+
+        .drp_left-arrow {
+            text-align: left;
+            width: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .drp_right-arrow {
+            text-align: right;
+            display: inline-block;
+            width: 50%;
+            cursor: pointer;
+        }
+    }
+
+    .drp_scroller {
+        white-space: nowrap;
+        width:100%;
+        height:100%;
+        overflow: hidden;
+        padding-bottom: 16px;
+        position: relative;
+
+        .drp_month {
+            display: inline-block;
+            margin-right: 16px;
+            margin-top: 3em;
+            vertical-align: top;
+            position: relative;
+            width:100%;
+            height:100%;
+            &::before {
+                content: attr(data-name);
+                position: absolute;
+                top: -2.5em;
+                left: 0;
+                right: 0;
+                margin: auto;
+                text-align: center;
+                color: rgba(51,51,51,.8);
+                font-size: 1.2em;
+                text-transform: capitalize;
+            }
+            .drp_week {
+                position: relative;
+                width:100%;
+                height:54px;
+                .drp_day {
+                    width: 14.28%;
+                    height: 100%;
+                    max-width:50px;
+                    max-height:50px;
+                    position: relative;
+                    display: inline-block;
+                    padding: 2px;
+                    box-sizing: border-box;
+                    
+
+                    &.drp_selected {
+                        .drp_day_content{
+                            background-color: @selected-bg-color;
+                            color: @selected-color;
+                        }
+                       
+                    }
+                   
+
+                    .drp_day_content{
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        border: 1px solid @border-color;
+                        background-color: @bg-color;
+                        cursor: pointer;
+                        &::after {
+                            content: attr(data-id);
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            padding: 2px;
+                        }
+                    }
+                }
+                &:first-child {
+                    &>.drp_day {
+                        &::before {
+                            content: attr(data-short);
+                            position: absolute;
+                            top: -1.5em;
+                            left: 0;
+                            text-align: center;
+                            right: 0;
+                            text-transform: uppercase;
+                            font-size: 0.6em;
+                            color: @week-color;
+                        }
+                    }
+                }
+                .drp_placeholder, 
+                .drp_placeholder.drp_out-of-range,
+                .drp_placeholder.drp_out-of-sequence,
+                .drp_placeholder.drp_locked {
+                    
+                    .drp_day_content{
+                        border: 1px solid @placeholder-border-color;
+                        background-color: @placeholder-bg-color;
+                        cursor: default;
+                        &::after {
+                            color: @placeholder-color
+                        }
+                    }
+                   
+                }
+                .drp_out-of-range,
+                .drp_out-of-range.drp_placeholder,
+                .drp_out-of-range.drp_out-of-sequence,
+                .drp_out-of-range.drp_locked {
+                    .drp_day_content{
+                        border: 1px solid @out-of-range-border-color;
+                        background-color: @out-of-range-bg-color;
+                        cursor: default;
+                        &::after {
+                            color: @out-of-range-color
+                        }
+                    }
+                    
+                }
+                .drp_out-of-sequence {
+                    .drp_day_content{
+                        border: 1px solid @out-of-sequence-border-color;
+                        background-color: @out-of-sequence-bg-color;
+                        cursor: default;
+                        &::after {
+                            color: @out-of-sequence-color
+                        }
+                    }
+                    
+                }
+                .drp_locked {
+                    .drp_day_content{
+                        border: 1px solid @locked-border-color;
+                        background-color: @locked-bg-color;
+                        cursor: default;
+                        &::after {
+                            color: @locked-color
+                        }
+                    }
+                   
+                }
+            }
+        }
+    }
+}
